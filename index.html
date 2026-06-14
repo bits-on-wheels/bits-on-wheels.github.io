@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bits-on-Wheels | Smart Mobility & Tech Solutions</title>
+    <title>Bits-on-Wheels | Open Research & Mobility Engineering</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
         /* Reset and Base Styles */
@@ -15,11 +15,12 @@
         }
 
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --accent-color: #38bdf8;
-            --text-main: #f8fafc;
+            --bg-color: #0b111e;
+            --card-bg: #131c2e;
+            --accent-color: #4cc2f1;
+            --text-main: #f1f5f9;
             --text-muted: #94a3b8;
+            --border-color: #1e293b;
         }
 
         body {
@@ -33,34 +34,39 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 10%;
-            background-color: rgba(15, 23, 42, 0.9);
+            padding: 1rem 8%;
+            background-color: rgba(11, 17, 30, 0.9);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #334155;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent-color);
+        .nav-logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
-            color: var(--text-main);
+            color: var(--text-muted);
             text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
@@ -68,158 +74,257 @@
             color: var(--accent-color);
         }
 
-        /* Hero Section */
+        /* Hero Banner Section */
         header {
-            min-height: 100vh;
+            margin-top: 73px; /* Account for fixed nav height */
+            position: relative;
+            width: 100%;
+            height: 45vh;
+            min-height: 350px;
+            overflow: hidden;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+        }
+
+        .banner-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to bottom, rgba(11, 17, 30, 0.3), rgba(11, 17, 30, 0.85)), url('Banner.jpeg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
             text-align: center;
-            padding: 0 1rem;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            max-width: 800px;
+            padding: 0 1.5rem;
         }
 
-        header h1 {
-            font-size: 3.5rem;
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
             margin-bottom: 1rem;
-            letter-spacing: -1px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
 
-        header h1 span {
-            color: var(--accent-color);
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
 
-        header p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            background-color: var(--accent-color);
-            color: #0f172a;
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
-        }
-
-        /* Sections Layout */
+        /* Main Section Container */
         section {
             padding: 5rem 10%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        section h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
         }
 
-        section h2::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 4px;
-            background-color: var(--accent-color);
-            margin: 10px auto 0;
-            border-radius: 2px;
+        /* Content Layouts */
+        .mission-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 4rem;
         }
 
-        /* Services Grid */
+        .mission-box p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 900px;
+        }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-bottom: 4rem;
         }
 
-        .card {
+        .research-card {
             background-color: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            transition: transform 0.3s;
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card i {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .card h3 {
+        .research-card h3 {
+            font-size: 1.3rem;
             margin-bottom: 1rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        .card p {
+        .research-card p {
             color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
-        /* LinkedIn Link Section */
-        .linkedin-section {
-            text-align: center;
-            background-color: #1e293b;
+        /* Community/LinkedIn Sync Area */
+        .community-panel {
+            background: linear-gradient(135deg, #131c2e 0%, #0f172a 100%);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 3rem;
-            border: 1px solid #334155;
+            padding: 4rem 3rem;
+            text-align: center;
+            margin-top: 2rem;
         }
 
-        .linkedin-btn {
-            background-color: #0077b5;
-            color: white;
+        .community-panel p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .linkedin-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            background-color: #0077b5;
+            color: #ffffff;
+            padding: 0.85rem 2.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, transform 0.2s;
         }
 
-        .linkedin-btn:hover {
+        .linkedin-link:hover {
             background-color: #005987;
-            box-shadow: 0 4px 20px rgba(0, 119, 181, 0.4);
+            transform: translateY(-1px);
         }
 
         /* Footer */
         footer {
-            background-color: #090d16;
-            text-align: center;
-            padding: 2rem;
+            background-color: #070a12;
+            border-top: 1px solid var(--border-color);
+            padding: 2.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid #1e293b;
+            font-size: 0.85rem;
         }
 
-        /* Responsive Design */
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-brand img {
+            height: 24px;
+            opacity: 0.7;
+        }
+
+        /* Responsive Breakpoints */
         @media (max-width: 768px) {
+            nav { padding: 1rem 5%; }
             .nav-links { display: none; }
-            header h1 { font-size: 2.5rem; }
-            section { padding: 4rem 5%; }
+            header { height: 35vh; }
+            .hero-content h1 { font-size: 2rem; }
+            section { padding: 3rem 5%; }
+            .mission-box { padding: 2rem; }
+            footer { flex-direction: column; gap: 1rem; text-align: center; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav>
-        <div class="logo">
-            <i class="fas fa-network-wired"></i> Bits-on-Wheels
+        <div class="nav-logo">
+            <!-- Verbatim reference to Logo.png -->
+            <img src="Logo.png" alt="Bits-on-Wheels Logo">
         </div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#connect">Connect</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#focus">Focus Areas</a></li>
+            <li><a href="#engagement">Community Engagement</a></li>
         </ul>
     </nav>
 
+    <!-- Hero Banner -->
     <header>
-        <h1>Moving <span>Bits</span>, Powering <span>Wheels</span></h1>
-        <p>Bridging the gap between software excellence and modern mobility solutions. We build the digital infrastructure for
+        <!-- Verbatim reference to Banner.jpeg inside the styling wrapper -->
+        <div class="banner-bg"></div>
+        <div class="hero-content">
+            <h1>Exploring the Intersection of Mobility and Intelligence</h1>
+            <p>An open-ended sandbox exploring data architectures, connected logic, and embedded computational boundaries.</p>
+        </div>
+    </header>
+
+    <!-- Core Content -->
+    <main>
+        
+        <!-- Mission Section -->
+        <section id="mission">
+            <h2 class="section-title">Our Mission</h2>
+            <div class="mission-box">
+                <p>Bits-on-Wheels acts as an independent repository dedicated to exploring smart vehicle architecture, telemetry frameworks, and software-defined physical ecosystems. Our core focus lies in dissecting how physical mobility syncs with processing logic, establishing stable knowledge systems free from corporate silos.</p>
+            </div>
+        </section>
+
+        <!-- Focus Areas Section -->
+        <section id="focus">
+            <h2 class="section-title">Focus Areas</h2>
+            <div class="grid">
+                <div class="research-card">
+                    <h3><i class="fas fa-microchip"></i> Autonomous Architecture</h3>
+                    <p>Evaluating raw hardware telemetry pipelines, edge compute models, and internal communications protocols for physical nodes.</p>
+                </div>
+                <div class="research-card">
+                    <h3><i class="fas fa-database"></i> Decentralized Data Streams</h3>
+                    <p>Analyzing high-throughput data pipelines and secure telemetry distribution structures across complex network environments.</p>
+                </div>
+                <div class="research-card">
+                    <h3><i class="fas fa-network-wired"></i> Embedded Security Matrix</h3>
+                    <p>Investigating mitigation architectures against vectors targeting interconnected IoT frameworks and local field busses.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Engagement Section -->
+        <section id="engagement">
+            <h2 class="section-title">Community Engagement</h2>
+            <div class="community-panel">
+                <p>We log progress, map engineering documentation, and share structural blueprints openly. Feel free to follow our network updates to stay informed on our latest public documentation releases.</p>
+                <!-- REPLACE THE HREF VALUE BELOW WITH YOUR EXACT LINKEDIN PAGE URL -->
+                <a href="https://www.linkedin.com" target="_blank" class="linkedin-link">
+                    <i class="fab fa-linkedin"></i> Follow Bits-on-Wheels on LinkedIn
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">
+            <img src="Logo.png" alt="Bits-on-Wheels">
+            <span>| Open Engineering Hub</span>
+        </div>
+        <p>&copy; 2026 Bits-on-Wheels. Documented openly for community collaboration.</p>
+    </footer>
+
+</body>
+</html>
